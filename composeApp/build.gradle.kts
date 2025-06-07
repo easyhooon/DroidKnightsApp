@@ -35,6 +35,10 @@ kotlin {
 
     sourceSets {
         val desktopMain by getting
+        desktopTest.dependencies {
+            implementation(libs.koin.test)
+            implementation(libs.kotlin.test)
+        }
 
         androidMain.dependencies {
             implementation(compose.preview)
@@ -53,9 +57,12 @@ kotlin {
             implementation(projects.core.datastore.datastoreSettings)
             implementation(projects.core.datastore.datastoreSettingsApi)
 
+            implementation(projects.core.network)
+
             implementation(projects.core.domain.domainSession)
 
             implementation(projects.feature.main)
+            implementation(projects.feature.contributor)
             implementation(projects.feature.session)
             implementation(projects.feature.setting)
             implementation(projects.feature.license)
@@ -115,12 +122,15 @@ compose.desktop {
 
             macOS {
                 dockName = "DroidKnights"
+                iconFile.set(rootProject.file("images/droidknights.icns"))
             }
             windows {
                 packageName = "DroidKnights"
+                iconFile.set(rootProject.file("images/droidknights.ico"))
             }
             linux {
                 packageName = "droidknights"
+                iconFile.set(rootProject.file("images/droidknights.png"))
             }
         }
     }

@@ -35,7 +35,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "DroidKnights"
-include(":composeApp", ":backend", ":shared")
+include(":composeApp")
 
 // core
 include(
@@ -66,6 +66,10 @@ include(
 // core - model
 include(
     ":core:model:model-session",
+)
+// core - network
+include(
+    ":core:network",
 )
 // feature
 include(
